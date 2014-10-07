@@ -16,17 +16,20 @@ that was available for Spring Webflow 1.x, but with the following notable improv
 ## Integration
 Add spring-webflow-client-repo to your application:
 
-        <dependency>
-            <groupId>org.jasig</groupId>
-            <artifactId>spring-webflow-client-repo</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+```xml
+<dependency>
+    <groupId>org.jasig</groupId>
+    <artifactId>spring-webflow-client-repo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 
 ## Usage
 `ClientFlowExecutionRepository` is the core component for proving for client
 side flow state storage. The following configuration snippet demonstrates how
 to wire up the component in a Webflow project:
 
+```xml
     <bean name="flowExecutor" class="org.springframework.webflow.executor.FlowExecutorImpl">
       <constructor-arg ref="flowRegistry" />
       <constructor-arg ref="flowExecutionFactory" />
@@ -64,6 +67,7 @@ to wire up the component in a Webflow project:
           p:IV="RPFgDkx2UURhg76uwdpFzg=="
           p:key="DyiZXcYwDyshV3VLtEaNKQ=="
           p:compression="true" />
+```
 
 ## Requirements
 Since the flow state is maintained in the flow execution identifier, the
@@ -71,6 +75,7 @@ Since the flow state is maintained in the flow execution identifier, the
 either a request parameter or hidden form parameter. When rendering a form for
 user input, a hidden parameter is convenient:
 
+```html
     <form:form modelAttribute="command" action="action.html">
       <input type="hidden" name="execution" value="${flowExecutionKey}" />
 
@@ -82,6 +87,7 @@ user input, a hidden parameter is convenient:
         </div>
       </fieldset>
     </form:form>
+```
 
 ## Security
 Since the server is providing data to the client for which the server is the
