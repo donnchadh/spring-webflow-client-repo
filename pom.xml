@@ -1,7 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jasig.parent</groupId>
+    <artifactId>jasig-parent</artifactId>
+    <version>39</version>
+  </parent>
 
+  <modelVersion>4.0.0</modelVersion>
   <groupId>org.jasig</groupId>
   <artifactId>spring-webflow-client-repo</artifactId>
   <version>1.0-RC1-SNAPSHOT</version>
@@ -35,59 +40,80 @@
       <email>marvin.addison@gmail.com</email>
       <timezone>-5</timezone>
     </developer>
+    <developer>
+      <id>mmoayyed</id>
+      <name>Misagh Moayyed</name>
+      <email>mmoayyed@unicon.net</email>
+      <timezone>-7</timezone>
+      <roles>
+        <role>developer</role>
+      </roles>
+    </developer>
   </developers>
+
+  <scm>
+    <connection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</connection>
+    <developerConnection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</developerConnection>
+    <url>https://github.com/Jasig/spring-webflow-client-repo</url>
+    <tag>HEAD</tag>
+  </scm>
 
   <dependencies>
     <dependency>
       <groupId>org.springframework.webflow</groupId>
       <artifactId>spring-webflow</artifactId>
-      <version>2.3.1.RELEASE</version>
+      <version>${spring.webflow.version}</version>
     </dependency>
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.7</version>
+      <version>${commons.codec.version}</version>
     </dependency>
     <dependency>
       <groupId>org.cryptacular</groupId>
       <artifactId>cryptacular</artifactId>
-      <version>1.0-RC1</version>
+      <version>${cryptacular.version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>${spring.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>${spring.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
+    <testResources>
+      <testResource>
+        <directory>${basedir}/src/test/resources</directory>
+      </testResource>
+    </testResources>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.0</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>${project.build.sourceVersion}</source>
+          <target>${project.build.targetVersion}</target>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>com.mycila.maven-license-plugin</groupId>
         <artifactId>maven-license-plugin</artifactId>
-        <version>1.10.b1</version>
         <configuration>
           <header>src/etc/header.txt</header>
           <skipExistingHeaders>true</skipExistingHeaders>
@@ -131,5 +157,15 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <project.build.sourceVersion>1.7</project.build.sourceVersion>
+    <project.build.targetVersion>1.7</project.build.targetVersion>
+
+    <!-- Dependency Versions -->
+    <spring.webflow.version>2.4.1.RELEASE</spring.webflow.version>
+    <commons.codec.version>1.9</commons.codec.version>
+    <cryptacular.version>1.0-RC1</cryptacular.version>
+    <junit.version>4.11</junit.version>
+    <spring.version>4.1.1.RELEASE</spring.version>
   </properties>
 </project>
