@@ -13,7 +13,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package edu.vt.middleware.webflow;
+package org.jasig.spring.webflow.plugin;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

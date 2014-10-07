@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>edu.vt.middleware</groupId>
+  <groupId>org.jasig</groupId>
   <artifactId>spring-webflow-client-repo</artifactId>
   <version>1.0-RC1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Spring Webflow Client Repository</name>
   <description>Flow execution storage on client via form/request parameter.</description>
-  <url>https://github.com/serac/spring-webflow-client-repo</url>
+  <url>https://github.com/Jasig/spring-webflow-client-repo</url>
   <inceptionYear>2013</inceptionYear>
 
   <licenses>

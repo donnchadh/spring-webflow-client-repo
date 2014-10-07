@@ -40,7 +40,7 @@
   <bean name="flowExecutionFactory" class="org.springframework.webflow.engine.impl.FlowExecutionImplFactory"
         p:executionKeyFactory-ref="flowExecutionRepository" />
 
-  <bean id="flowExecutionRepository" class="edu.vt.middleware.webflow.ClientFlowExecutionRepository">
+  <bean id="flowExecutionRepository" class="org.jasig.spring.webflow.plugin.ClientFlowExecutionRepository">
     <constructor-arg ref="flowExecutionFactory" />
     <constructor-arg ref="flowRegistry" />
     <constructor-arg ref="transcoder" />
@@ -48,7 +48,7 @@
 
   <bean id="viewFactoryCreator" class="org.springframework.webflow.test.MockViewFactoryCreator" />
 
-  <bean id="transcoder" class="edu.vt.middleware.webflow.EncryptedTranscoder"
+  <bean id="transcoder" class="org.jasig.spring.webflow.plugin.EncryptedTranscoder"
         p:compression="true">
     <property name="cipherBean">
       <bean class="org.cryptacular.bean.AEADBlockCipherBean"
