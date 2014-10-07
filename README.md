@@ -23,7 +23,7 @@ Add spring-webflow-client-repo to your application:
 <dependency>
     <groupId>org.jasig</groupId>
     <artifactId>spring-webflow-client-repo</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-RC1-SNAPSHOT</version>
 </dependency>
 ```
 
