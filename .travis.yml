@@ -1,0 +1,18 @@
+language: java
+env:
+  global:
+  - secure: Yb0dmdBVbz6AHPjm9rhOJJpyhNhapzpvTrd46lffJr6BLuUhuBputv7U9ngo7tSY86xnfNn2BpKWKLlU/jrCMTpeiKBb1kUlDbqFYwItb0hwEbREPeIkPu7Vze0UL5eBZf9aRfsrMoxt1aqHjtOLAQ5pQ4G8CGyDY5JEUHtF+6U=
+  - secure: "gq+gPyO8s8TJHHVUpe/02gAksXvncoCD1tW6w4tPR1qXheN+RNDhQZsTd5I58Haa+63wYAQr4UqBPlnVRmOZcksvzOKkQyCYZsKbbmP3/eMwgAtYpz/KNsByc02SFDUXFBiltQsuYIsaUdkc1nghQmABF6+K/y+3pl43gGF2HeQ="
+branches:
+  only:
+  - master
+before_install:
+- chmod -R 777 ./travis/init-travis-build.sh
+- ./travis/init-travis-build.sh
+install:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -q
+script:
+- mvn clean package -q
+after_success:
+- chmod -R 777 ./travis/deploy-to-sonatype.sh
+- ./travis/deploy-to-sonatype.sh
