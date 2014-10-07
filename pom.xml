@@ -90,6 +90,7 @@
         <version>1.10.b1</version>
         <configuration>
           <header>src/etc/header.txt</header>
+          <skipExistingHeaders>false</skipExistingHeaders>
           <headerDefinitions>
             <headerDefinition>src/etc/header-definitions.xml</headerDefinition>
           </headerDefinitions>
@@ -100,6 +101,7 @@
             <exclude>**/NOTICE*</exclude>
             <exclude>**/README*</exclude>
             <exclude>**/*.iml</exclude>
+            <exclude>**/*.jceks</exclude>
             <exclude>**/*.log</exclude>
             <exclude>**/*.license</exclude>
             <exclude>**/.gitignore</exclude>
