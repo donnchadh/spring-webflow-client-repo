@@ -17,7 +17,7 @@ that was available for Spring Webflow 1.x, but with the following notable improv
 Add spring-webflow-client-repo to your application:
 
         <dependency>
-            <groupId>edu.vt.middleware</groupId>
+            <groupId>org.jasig</groupId>
             <artifactId>spring-webflow-client-repo</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
