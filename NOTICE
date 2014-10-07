@@ -1,7 +1,13 @@
 Spring Webflow Client Repository
 Copyright 2013 Virginia Tech
+Copyright 2014 Apereo Foundation
 
-This product makes use of components developed by third parties. The licensing terms are noted for each product.
+This software was originally developed by the Middleware group at Virginia
+Tech. The original source is granted to the Apereo Foundation for use and
+further development.
+
+This product makes use of software components developed by third parties.
+The licensing terms are noted for each product.
 
  1. Spring Framework - Apache License v2.0
  2. Commons Codec - Apache License v2.0
