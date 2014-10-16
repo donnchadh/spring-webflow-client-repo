@@ -18,12 +18,6 @@
  */
 package org.jasig.spring.webflow.plugin;
 
-import java.io.File;
-import java.io.Serializable;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.cryptacular.bean.AEADBlockCipherBean;
 import org.cryptacular.bean.BufferedBlockCipherBean;
 import org.cryptacular.bean.KeyStoreFactoryBean;
@@ -34,6 +28,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+
+import java.io.File;
+import java.io.Serializable;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Collection;
 
 import static junit.framework.TestCase.assertEquals;
 

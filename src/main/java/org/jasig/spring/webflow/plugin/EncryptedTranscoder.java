@@ -18,6 +18,14 @@
  */
 package org.jasig.spring.webflow.plugin;
 
+import org.cryptacular.bean.BufferedBlockCipherBean;
+import org.cryptacular.bean.CipherBean;
+import org.cryptacular.bean.KeyStoreFactoryBean;
+import org.cryptacular.generator.sp80038a.RBGNonce;
+import org.cryptacular.io.FileResource;
+import org.cryptacular.spec.BufferedBlockCipherSpec;
+import org.springframework.core.io.ClassPathResource;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -26,15 +34,13 @@ import java.io.ObjectOutputStream;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.cryptacular.bean.CipherBean;
-
 /**
  * Encodes an object by encrypting its serialized byte stream. Details of encryption are handled by an instance of
- * {@link CipherBean}.
+ * {@link CipherBean}. Default ciphering mode is set to 128-bit AES in CBC mode with compression.
  * <p>
  * Optional gzip compression of the serialized byte stream before encryption is supported and enabled by default.
- *
  * @author Marvin S. Addison
+ * @author Misagh Moayyed
  */
 public class EncryptedTranscoder implements Transcoder {
 
@@ -44,6 +50,21 @@ public class EncryptedTranscoder implements Transcoder {
     /** Flag to indicate whether to Gzip compression before encryption. */
     private boolean compression = true;
 
+    public EncryptedTranscoder() throws IOException {
+        final KeyStoreFactoryBean ksFactory = new KeyStoreFactoryBean();
+        ksFactory.setResource(new FileResource(new ClassPathResource("/keystore.jceks").getFile()));
+        ksFactory.setType("JCEKS");
+        ksFactory.setPassword("changeit");
+
+        final BufferedBlockCipherBean bufferedBlockCipherBean = new BufferedBlockCipherBean();
+        bufferedBlockCipherBean.setBlockCipherSpec(new BufferedBlockCipherSpec("AES", "CBC", "PKCS7"));
+        bufferedBlockCipherBean.setKeyStore(ksFactory.newInstance());
+        bufferedBlockCipherBean.setKeyAlias("aes128");
+        bufferedBlockCipherBean.setKeyPassword("changeit");
+        bufferedBlockCipherBean.setNonce(new RBGNonce());
+
+        setCipherBean(bufferedBlockCipherBean);
+    }
 
     public void setCompression(final boolean compression) {
         this.compression = compression;
