@@ -18,9 +18,6 @@
  */
 package org.jasig.spring.webflow.plugin;
 
-import java.io.IOException;
-import java.io.Serializable;
-
 import org.springframework.util.Assert;
 import org.springframework.webflow.core.collection.MutableAttributeMap;
 import org.springframework.webflow.definition.FlowDefinition;
@@ -32,6 +29,9 @@ import org.springframework.webflow.execution.FlowExecutionKeyFactory;
 import org.springframework.webflow.execution.repository.FlowExecutionLock;
 import org.springframework.webflow.execution.repository.FlowExecutionRepository;
 import org.springframework.webflow.execution.repository.FlowExecutionRepositoryException;
+
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  * Stores all flow execution state in {@link ClientFlowExecutionKey}, which effectively stores execution state on the
@@ -74,10 +74,12 @@ public class ClientFlowExecutionRepository implements FlowExecutionRepository, F
         return ClientFlowExecutionKey.parse(encodedKey);
     }
 
+    @Override
     public FlowExecutionLock getLock(final FlowExecutionKey key) throws FlowExecutionRepositoryException {
         return NOOP_LOCK;
     }
 
+    @Override
     public FlowExecution getFlowExecution(final FlowExecutionKey key) throws FlowExecutionRepositoryException {
         if (!(key instanceof ClientFlowExecutionKey)) {
             throw new IllegalArgumentException(
@@ -89,15 +91,18 @@ public class ClientFlowExecutionRepository implements FlowExecutionRepository, F
             final FlowDefinition flow = this.flowDefinitionLocator.getFlowDefinition(state.getFlowId());
             return this.flowExecutionFactory.restoreFlowExecution(
                     state.getExecution(), flow, key, state.getConversationScope(), this.flowDefinitionLocator);
-        } catch (IOException e) {
+        } catch (final IOException e) {
             throw new ClientFlowExecutionRepositoryException("Error decoding flow execution", e);
         }
     }
 
+    @Override
     public void putFlowExecution(final FlowExecution flowExecution) throws FlowExecutionRepositoryException {}
 
+    @Override
     public void removeFlowExecution(final FlowExecution flowExecution) throws FlowExecutionRepositoryException {}
 
+    @Override
     public FlowExecutionKey getKey(final FlowExecution execution) {
         try {
             return new ClientFlowExecutionKey(this.transcoder.encode(new SerializedFlowExecutionState(execution)));
@@ -106,14 +111,17 @@ public class ClientFlowExecutionRepository implements FlowExecutionRepository, F
         }
     }
 
+    @Override
     public void updateFlowExecutionSnapshot(final FlowExecution execution) {}
 
+    @Override
     public void removeFlowExecutionSnapshot(final FlowExecution execution) {}
 
+    @Override
     public void removeAllFlowExecutionSnapshots(final FlowExecution execution) {}
 
 
-    static class SerializedFlowExecutionState implements Serializable {
+    private static class SerializedFlowExecutionState implements Serializable {
         private static final long serialVersionUID = -4020991769174829876L;
 
         private final String flowId;

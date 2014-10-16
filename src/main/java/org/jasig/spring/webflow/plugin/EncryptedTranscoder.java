@@ -22,15 +22,15 @@ import org.cryptacular.bean.BufferedBlockCipherBean;
 import org.cryptacular.bean.CipherBean;
 import org.cryptacular.bean.KeyStoreFactoryBean;
 import org.cryptacular.generator.sp80038a.RBGNonce;
-import org.cryptacular.io.FileResource;
+import org.cryptacular.io.URLResource;
 import org.cryptacular.spec.BufferedBlockCipherSpec;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -52,7 +52,9 @@ public class EncryptedTranscoder implements Transcoder {
 
     public EncryptedTranscoder() throws IOException {
         final KeyStoreFactoryBean ksFactory = new KeyStoreFactoryBean();
-        ksFactory.setResource(new FileResource(new ClassPathResource("/keystore.jceks").getFile()));
+        final URL u = this.getClass().getResource("/etc/keystore.jceks");
+
+        ksFactory.setResource(new URLResource(u));
         ksFactory.setType("JCEKS");
         ksFactory.setPassword("changeit");
 
