@@ -47,7 +47,7 @@ to wire up the component in a Webflow project:
           p:executionKeyFactory-ref="flowExecutionRepository"
           p:executionListenerLoader-ref="listenerLoader"/>
 
-    <bean id="flowExecutionRepository" class="org.jasig.cas.webflow.plugin.ClientFlowExecutionRepository">
+    <bean id="flowExecutionRepository" class="org.jasig.spring.webflow.plugin.ClientFlowExecutionRepository">
       <constructor-arg ref="flowExecutionFactory" />
       <constructor-arg ref="flowRegistry" />
       <constructor-arg ref="transcoder" />
@@ -65,7 +65,7 @@ to wire up the component in a Webflow project:
       </constructor-arg>
     </bean>
 
-    <bean id="transcoder" class="org.jasig.cas.webflow.plugin.EncryptedTranscoder"
+    <bean id="transcoder" class="org.jasig.spring.webflow.plugin.EncryptedTranscoder"
           p:compression="true" />
 ```
 
