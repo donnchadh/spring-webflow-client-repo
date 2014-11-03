@@ -62,8 +62,8 @@ public class EncryptedTranscoder implements Transcoder {
         setCipherBean(bufferedBlockCipherBean);
     }
 
-    public EncryptedTranscoder(final CipherBean bean) throws IOException {
-        setCipherBean(bean);
+    public EncryptedTranscoder(final CipherBean cipherBean) throws IOException {
+        setCipherBean(cipherBean);
     }
 
     public void setCompression(final boolean compression) {
