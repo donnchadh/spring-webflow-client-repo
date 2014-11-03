@@ -31,6 +31,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.security.KeyStore;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -51,16 +52,9 @@ public class EncryptedTranscoder implements Transcoder {
     private boolean compression = true;
 
     public EncryptedTranscoder() throws IOException {
-        final KeyStoreFactoryBean ksFactory = new KeyStoreFactoryBean();
-        final URL u = this.getClass().getResource("/etc/keystore.jceks");
-
-        ksFactory.setResource(new URLResource(u));
-        ksFactory.setType("JCEKS");
-        ksFactory.setPassword("changeit");
-
         final BufferedBlockCipherBean bufferedBlockCipherBean = new BufferedBlockCipherBean();
         bufferedBlockCipherBean.setBlockCipherSpec(new BufferedBlockCipherSpec("AES", "CBC", "PKCS7"));
-        bufferedBlockCipherBean.setKeyStore(ksFactory.newInstance());
+        bufferedBlockCipherBean.setKeyStore(createAndPrepareKeyStore());
         bufferedBlockCipherBean.setKeyAlias("aes128");
         bufferedBlockCipherBean.setKeyPassword("changeit");
         bufferedBlockCipherBean.setNonce(new RBGNonce());
@@ -68,11 +62,15 @@ public class EncryptedTranscoder implements Transcoder {
         setCipherBean(bufferedBlockCipherBean);
     }
 
+    public EncryptedTranscoder(final CipherBean bean) throws IOException {
+        setCipherBean(bean);
+    }
+
     public void setCompression(final boolean compression) {
         this.compression = compression;
     }
 
-    public void setCipherBean(final CipherBean cipherBean) {
+    protected void setCipherBean(final CipherBean cipherBean) {
         this.cipherBean = cipherBean;
     }
 
@@ -124,5 +122,16 @@ public class EncryptedTranscoder implements Transcoder {
                 in.close();
             }
         }
+    }
+
+    protected KeyStore createAndPrepareKeyStore() {
+        final KeyStoreFactoryBean ksFactory = new KeyStoreFactoryBean();
+        final URL u = this.getClass().getResource("/etc/keystore.jceks");
+
+        ksFactory.setResource(new URLResource(u));
+        ksFactory.setType("JCEKS");
+        ksFactory.setPassword("changeit");
+
+        return ksFactory.newInstance();
     }
 }
