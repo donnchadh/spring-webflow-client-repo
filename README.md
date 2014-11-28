@@ -33,40 +33,40 @@ side flow state storage. The following configuration snippet demonstrates how
 to wire up the component in a Webflow project:
 
 ```xml
-    <bean name="flowExecutor" class="org.springframework.webflow.executor.FlowExecutorImpl">
-      <constructor-arg ref="flowRegistry" />
-      <constructor-arg ref="flowExecutionFactory" />
-      <constructor-arg ref="flowExecutionRepository" />
-    </bean>
+<bean name="flowExecutor" class="org.springframework.webflow.executor.FlowExecutorImpl">
+  <constructor-arg ref="flowRegistry" />
+  <constructor-arg ref="flowExecutionFactory" />
+  <constructor-arg ref="flowExecutionRepository" />
+</bean>
 
-    <webflow:flow-registry id="flowRegistry">
-      <webflow:flow-location path="test-flow.xml" id="test"/>
-    </webflow:flow-registry>
+<webflow:flow-registry id="flowRegistry">
+  <webflow:flow-location path="test-flow.xml" id="test"/>
+</webflow:flow-registry>
 
-    <bean name="flowExecutionFactory" class="org.springframework.webflow.engine.impl.FlowExecutionImplFactory"
-          p:executionKeyFactory-ref="flowExecutionRepository"
-          p:executionListenerLoader-ref="listenerLoader"/>
+<bean name="flowExecutionFactory" class="org.springframework.webflow.engine.impl.FlowExecutionImplFactory"
+      p:executionKeyFactory-ref="flowExecutionRepository"
+      p:executionListenerLoader-ref="listenerLoader"/>
 
-    <bean id="flowExecutionRepository" class="org.jasig.spring.webflow.plugin.ClientFlowExecutionRepository">
-      <constructor-arg ref="flowExecutionFactory" />
-      <constructor-arg ref="flowRegistry" />
-      <constructor-arg ref="transcoder" />
-    </bean>
+<bean id="flowExecutionRepository" class="org.jasig.spring.webflow.plugin.ClientFlowExecutionRepository">
+  <constructor-arg ref="flowExecutionFactory" />
+  <constructor-arg ref="flowRegistry" />
+  <constructor-arg ref="transcoder" />
+</bean>
 
-    <bean id="listenerLoader" class="org.springframework.webflow.execution.factory.StaticFlowExecutionListenerLoader">
-      <constructor-arg>
-        <list>
-          <!--
-          <ref bean="firstExecutionListener" />
-          <ref bean="secondExecutionListener" />
-          <ref bean="thirdExecutionListener" />
-          -->
-        </list>
-      </constructor-arg>
-    </bean>
+<bean id="listenerLoader" class="org.springframework.webflow.execution.factory.StaticFlowExecutionListenerLoader">
+  <constructor-arg>
+    <list>
+      <!--
+      <ref bean="firstExecutionListener" />
+      <ref bean="secondExecutionListener" />
+      <ref bean="thirdExecutionListener" />
+      -->
+    </list>
+  </constructor-arg>
+</bean>
 
-    <bean id="transcoder" class="org.jasig.spring.webflow.plugin.EncryptedTranscoder"
-          p:compression="true" />
+<bean id="transcoder" class="org.jasig.spring.webflow.plugin.EncryptedTranscoder"
+      p:compression="true" />
 ```
 
 ## Requirements
@@ -76,17 +76,17 @@ either a request parameter or hidden form parameter. When rendering a form for
 user input, a hidden parameter is convenient:
 
 ```html
-    <form:form modelAttribute="command" action="action.html">
-      <input type="hidden" name="execution" value="${flowExecutionKey}" />
+<form:form modelAttribute="command" action="action.html">
+  <input type="hidden" name="execution" value="${flowExecutionKey}" />
 
-      <fieldset>
-        ... 
-        <div class="button">
-          <input type="submit" id="save" name="_eventId_save" value="save"/>
-          <input type="submit" name="_eventId_cancel" value="cancel"/>
-        </div>
-      </fieldset>
-    </form:form>
+  <fieldset>
+    ... 
+    <div class="button">
+      <input type="submit" id="save" name="_eventId_save" value="save"/>
+      <input type="submit" name="_eventId_cancel" value="cancel"/>
+    </div>
+  </fieldset>
+</form:form>
 ```
 
 ## Security
