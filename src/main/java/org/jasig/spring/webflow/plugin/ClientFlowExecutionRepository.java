@@ -62,8 +62,8 @@ public class ClientFlowExecutionRepository implements FlowExecutionRepository, F
             final FlowExecutionFactory flowExecutionFactory,
             final FlowDefinitionLocator flowDefinitionLocator,
             final Transcoder transcoder) {
-        Assert.notNull(transcoder, "FlowExecutionFactory cannot be null");
-        Assert.notNull(transcoder, "FlowDefinitionLocator cannot be null");
+        Assert.notNull(flowExecutionFactory, "FlowExecutionFactory cannot be null");
+        Assert.notNull(flowDefinitionLocator, "FlowDefinitionLocator cannot be null");
         Assert.notNull(transcoder, "Transcoder cannot be null");
         this.flowExecutionFactory = flowExecutionFactory;
         this.flowDefinitionLocator = flowDefinitionLocator;
