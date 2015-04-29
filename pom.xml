@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>org.jasig.parent</groupId>
         <artifactId>jasig-parent</artifactId>
@@ -9,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jasig</groupId>
     <artifactId>spring-webflow-client-repo</artifactId>
-    <version>1.0-RC1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Spring Webflow Client Repository</name>
@@ -29,7 +28,7 @@
         <repository>
             <id>vt-middleware</id>
             <url>https://raw.github.com/vt-middleware/maven-repo/master</url>
-            <snapshots/>
+            <snapshots />
         </repository>
     </repositories>
 
@@ -55,7 +54,7 @@
         <connection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</connection>
         <developerConnection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</developerConnection>
         <url>https://github.com/Jasig/spring-webflow-client-repo</url>
-        <tag>HEAD</tag>
+        <tag>spring-webflow-client-repo-1.0.0</tag>
     </scm>
 
     <dependencies>
