@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.jasig</groupId>
     <artifactId>spring-webflow-client-repo</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Spring Webflow Client Repository</name>
@@ -54,7 +54,7 @@
         <connection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</connection>
         <developerConnection>scm:git:git@github.com:Jasig/spring-webflow-client-repo.git</developerConnection>
         <url>https://github.com/Jasig/spring-webflow-client-repo</url>
-        <tag>spring-webflow-client-repo-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <dependencies>
