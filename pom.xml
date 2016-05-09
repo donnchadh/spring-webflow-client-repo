@@ -248,6 +248,7 @@
                         <exclude>src/etc/**</exclude>
                         <exclude>**/.eclipse/**</exclude>
                         <exclude>**/.idea/**</exclude>
+                        <exclude>**/.jceks</exclude>
                     </excludes>
                 </configuration>
                 <executions>
