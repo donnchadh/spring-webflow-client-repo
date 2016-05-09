@@ -217,49 +217,6 @@
                     <target>${project.build.targetVersion}</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>com.mycila.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <configuration>
-                    <header>src/etc/header.txt</header>
-                    <skipExistingHeaders>true</skipExistingHeaders>
-                    <headerDefinitions>
-                        <headerDefinition>src/etc/header-definitions.xml</headerDefinition>
-                    </headerDefinitions>
-                    <mapping>
-                        <schema>SCRIPT_STYLE</schema>]
-                        <ldif>SCRIPT_STYLE</ldif>
-                        <yml>SCRIPT_STYLE</yml>
-                        <conf>JAVADOC_STYLE</conf>
-                    </mapping>
-                    <strictCheck>true</strictCheck>
-                    <excludes>
-                        <exclude>LICENSE</exclude>
-                        <exclude>**/INSTALL*</exclude>
-                        <exclude>**/NOTICE*</exclude>
-                        <exclude>**/README*</exclude>
-                        <exclude>**/*.iml</exclude>
-                        <exclude>**/*.jceks</exclude>
-                        <exclude>**/*.log</exclude>
-                        <exclude>**/*.license</exclude>
-                        <exclude>**/.gitignore</exclude>
-                        <exclude>**/.project</exclude>
-                        <exclude>src/etc/**</exclude>
-                        <exclude>**/.eclipse/**</exclude>
-                        <exclude>**/.idea/**</exclude>
-                        <exclude>**/.jceks</exclude>
-                    </excludes>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
