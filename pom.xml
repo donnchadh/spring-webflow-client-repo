@@ -28,7 +28,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apereo</groupId>
     <artifactId>spring-webflow-client-repo</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Spring Webflow Client Repository</name>
@@ -74,7 +74,7 @@
         <connection>scm:git:git@github.com:Apereo/spring-webflow-client-repo.git</connection>
         <developerConnection>scm:git:git@github.com:Apereo/spring-webflow-client-repo.git</developerConnection>
         <url>https://github.com/Apereo/spring-webflow-client-repo</url>
-        <tag>HEAD</tag>
+        <tag>spring-webflow-client-repo-1.0.3</tag>
     </scm>
 
     <dependencies>
