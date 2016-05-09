@@ -66,3 +66,4 @@ public class ClientFlowExecutionRepositoryTest {
         assertEquals("lasagnaDinner", resumeResult.getOutcome().getId());
     }
 }
+

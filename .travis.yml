@@ -10,7 +10,7 @@ before_install:
 - chmod -R 777 ./travis/init-travis-build.sh
 - ./travis/init-travis-build.sh
 install:
-- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+- mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 script:
 - mvn clean package -q
 after_success:

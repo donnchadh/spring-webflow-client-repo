@@ -110,3 +110,4 @@ public class EncryptedTranscoderTest {
         assertEquals(this.encodable, this.transcoder.decode(encoded));
     }
 }
+
