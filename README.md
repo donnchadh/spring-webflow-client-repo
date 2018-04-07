@@ -4,13 +4,13 @@ This project provides a facility for storing flow execution state on the client
 in Spring Webflow 2.x. Flow state is stored as an encoded byte stream in the
 flow execution identifier provided to the client when rendering a view. It
 effectively provides a replacement for
-[`ClientContinuationFlowExecutionRepository`](http://static.springsource.org/spring-webflow/docs/1.0.5/api/org/springframework/webflow/execution/repository/continuation/ClientContinuationFlowExecutionRepository.html)
+[`ClientContinuationFlowExecutionRepository`](https://static.javadoc.io/org.springframework/spring-webflow/1.0.6/org/springframework/webflow/execution/repository/continuation/ClientContinuationFlowExecutionRepository.html)
 that was available for Spring Webflow 1.x, but with the following notable improvements:
 
 * Support for conversation management (e.g. flow scope)
 * Encryption of encoded flow state to prevent tampering by malicious clients
 
-## Building [![Build Status](https://api.travis-ci.org/apereo/spring-webflow-client-repo.png)](http://travis-ci.org/apereo/spring-webflow-client-repo)
+## Building [![Build Status](https://api.travis-ci.org/donnchadh/spring-webflow-client-repo.png)](http://travis-ci.org/apereo/spring-webflow-client-repo)
 
 ```bash
 mvn clean install
