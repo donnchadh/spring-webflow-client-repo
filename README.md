@@ -10,7 +10,7 @@ that was available for Spring Webflow 1.x, but with the following notable improv
 * Support for conversation management (e.g. flow scope)
 * Encryption of encoded flow state to prevent tampering by malicious clients
 
-## Building [![Build Status](https://api.travis-ci.org/donnchadh/spring-webflow-client-repo.png)](http://travis-ci.org/apereo/spring-webflow-client-repo)
+## Building [![Build Status](https://api.travis-ci.org/donnchadh/spring-webflow-client-repo.png)](http://travis-ci.org/donnchadh/spring-webflow-client-repo)
 
 ```bash
 mvn clean install
